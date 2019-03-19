@@ -1,7 +1,7 @@
 var data;
 
 function preload() {
-  data = loadJSON("AFINN-111_data.json");
+  data = loadJSON("./data/AFINN-111_data.json");
 }
 
 function setup() {
@@ -33,7 +33,13 @@ function setup() {
     wordlist.html(scoredWords);
     let conclusion = select("#conclusion");
     conclusion.html(
-      `<mark>Result: ${totalScore <= 0 ? `Negative</mark>` : `Positive</mark>`}`
+      `<mark>Result: ${
+        totalScore < 0
+          ? `Negative</mark>`
+          : (totalScore = 0
+              ? `Neutral</mark>`
+              : totalScore > 0`Positive</mark>`)
+      }`
     );
   }
 }
